@@ -36,7 +36,7 @@ add_library(${LIB_NAME} ${LIB_HEADERS} ${LIB_SOURCES})
 target_link_libraries(${LIB_NAME} 
                     PUBLIC
                         OpenSSL::Crypto
-                        JANSSON_PKG)
+                        ${JANSSON_PKG})
 set_target_properties(${LIB_NAME} 
     PROPERTIES
         C_STANDARD 11

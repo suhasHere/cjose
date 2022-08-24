@@ -19,6 +19,8 @@ if (JANSSON_FOUND)
     set(JANSSON_PKG libjansson)
     include_directories(${JANSSON_INCLUDE_DIRS})
     link_directories(${JANSSON_LIBRARY_DIRS})
+    message(STATUS "hi ${JANSSON_LIBRARY_DIRS}")
+    message(STATUS "hi ${JANSSON_INCLUDE_DIRS}")
 else (JANSSON_FOUND)
     message(FATAL_ERROR "libjansson >=2.3 not found")
 endif (JANSSON_FOUND)
@@ -55,3 +57,5 @@ target_include_directories(${LIB_NAME}
 target_compile_options(${LIB_NAME} PRIVATE
     $<$<OR:$<C_COMPILER_ID:Clang>,$<C_COMPILER_ID:AppleClang>,$<C_COMPILER_ID:GNU>>: -Wpedantic -Wextra -Wall>
     $<$<C_COMPILER_ID:MSVC>: >)
+
+target_link_directories(${LIB_NAME} PUBLIC ${JANSSON_LIBRARY_DIRS}) 

@@ -45,12 +45,13 @@ set_target_properties(${LIB_NAME}
 
 target_include_directories(${LIB_NAME}
   PUBLIC
-    $<INSTALL_INTERFACE:include>
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+    ${PROJECT_SOURCE_DIR}/include
+    ${JANSSON_INCLUDE_DIRS}
+    #$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+    #$<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
   PRIVATE
     ${OPENSSL_INCLUDE_DIR}
-    ${JANSSON_INCLUDE_DIRS}
+    #${JANSSON_INCLUDE_DIRS}
 )
 
 target_compile_options(${LIB_NAME} PRIVATE

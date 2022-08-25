@@ -19,8 +19,6 @@ if (JANSSON_FOUND)
     set(JANSSON_PKG libjansson)
     include_directories(${JANSSON_INCLUDE_DIRS})
     link_directories(${JANSSON_LIBRARY_DIRS})
-    message(STATUS "hi ${JANSSON_LIBRARY_DIRS}")
-    message(STATUS "hi ${JANSSON_INCLUDE_DIRS}")
 else (JANSSON_FOUND)
     message(FATAL_ERROR "libjansson >=2.3 not found")
 endif (JANSSON_FOUND)
@@ -47,6 +45,7 @@ set_target_properties(${LIB_NAME}
 
 target_include_directories(${LIB_NAME}
   PUBLIC
+    $<INSTALL_INTERFACE:include>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
   PRIVATE
